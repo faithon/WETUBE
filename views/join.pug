@@ -1,0 +1,11 @@
+extends layouts/main
+
+block content
+    .form__container
+        form(action="/join", method="post")
+            input(type="text", name="fullName", placeholder="Full Name")
+            input(type="email", name="email", placeholder="Email")
+            input(type="password", name="password", placeholder="Password")
+            input(type="password", name="password2", placeholder="Verify Password")
+            input(type="submit", value="Sign Up")
+    include partials/socialLogin

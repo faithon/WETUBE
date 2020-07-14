@@ -1,8 +1,9 @@
 import express from "express";
+import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import helmet from "helmet";
-import cookieParser from "cookie-parser";
-import bodyParser from "body-parser";
+import { localsMiddleware } from "./middlewares";
 import globalRouter from "./routes/globalRouter";
 import userRouter from "./routes/userRouter";
 import videoRouter from "./routes/videoRouter";
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
+app.use(localsMiddleware, localsMiddleware);
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
